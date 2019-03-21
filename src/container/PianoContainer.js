@@ -4,6 +4,9 @@ import MQTTConnection from '../config/MQTTConnection';
 import '../css/PianoContainer.css';
 import PianoWrapper from "../components/PianoWrapper";
 
+let xpos = 0;
+let ypos = 0;
+
 class PianoContainer extends React.Component {
 
     constructor() {
@@ -25,19 +28,19 @@ class PianoContainer extends React.Component {
             if (connection.isConnected) {
                 coords = connection.getCoordsFromTag(tag);
                 console.log("Coords", coords);
+                xpos = coords.x - 5600;
+                ypos = -(coords.y - 5800);
+                console.log("mapped coords", xpos, ypos);
             }
         }, 2000);
-        let x = coords.x;
-        let y = coords.y;
-        console.log("X Position: " + x);
-        console.log("Y Position: " + y);
     }
 
     render() {
         return (
           <div>
               <div className="piano-container">
-                  <PianoWrapper firstNote={'c3'} lastNote={'c3'}/>
+                  <PianoWrapper firstNote={'c3'} lastNote={'c5'}/>
+                  {/*<PianoWrapper firstNote={'c3'} lastNote={'c3'}/>
                   <PianoWrapper firstNote={'d3'} lastNote={'d3'}/>
                   <PianoWrapper firstNote={'e3'} lastNote={'e3'}/>
                   <PianoWrapper firstNote={'f3'} lastNote={'f3'}/>
@@ -52,6 +55,7 @@ class PianoContainer extends React.Component {
                   <PianoWrapper firstNote={'a4'} lastNote={'a4'}/>
                   <PianoWrapper firstNote={'b4'} lastNote={'b4'}/>
                   <PianoWrapper firstNote={'c5'} lastNote={'c5'}/>
+                  */}
               </div>
               {/*<Tangent note="C" xstart="5200" xend="5866" ystart={this.state.yStartPos} yend={this.state.yEndPos} sound="sound_url"/>
               <Tangent note="D" xstart="5866" xend="6532" ystart={this.state.yStartPos} yend={this.state.yEndPos} sound="sound_url"/>
