@@ -1,8 +1,12 @@
 import React from 'react';
 
 class MQTTConnection extends React.Component {
-    lastMessage = {}; // Set by the message event
     isConnected = false;
+    lastMessage = {}; // Set by the message event
+    lastCoords = {
+        x: 0,
+        y: 0
+    };
 
     connect() {
         var url = 'wss://mqtt.cloud.pozyxlabs.com:443';
@@ -27,6 +31,8 @@ class MQTTConnection extends React.Component {
         this.client.on('reconnect', () => console.info('Reconnecting...'));
         this.client.on('message', (topic, msg) =>  {
             var resp = JSON.parse(msg.toString());
+
+            // Checks if data is ok
             if (resp[0]['success'] === true) {
                 this.lastMessage = resp;
             }
@@ -35,24 +41,31 @@ class MQTTConnection extends React.Component {
 
     getDataFromTag(tagId) {
         var tagData = "";
+
         this.lastMessage.forEach((element) => {
             if (element.tagId === tagId) {
                 tagData = element;
             }
         });
+
         return tagData;
     }
 
     getCoordsFromTag(tagId) {
-        var tag = (this.getDataFromTag(tagId) != null) ? this.getDataFromTag(tagId) : {};
+        var coords = this.lastCoords;
+        var tag = this.getDataFromTag(tagId);
+
+        // If any sub lists are undefined, default back to the last coordinates used
         if (typeof tag.data !== "undefined") {
-            var xCoord = (typeof tag.data.coordinates.x !== "undefined") ? tag.data.coordinates.x : 0;
-            var yCoord = (typeof tag.data.coordinates.y !== "undefined") ? tag.data.coordinates.y : 0;
-            return {
-                x: xCoord,
-                y: yCoord,
+            if (typeof tag.data.coordinates !== "undefined") {
+                coords.x = tag.data.coordinates.x;
+                coords.y = tag.data.coordinates.y;
+
+                this.lastCoords = coords;
             }
         }
+
+        return coords;
     }
 }
 
