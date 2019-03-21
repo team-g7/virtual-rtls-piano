@@ -1,5 +1,6 @@
 import React from "react";
 import Tangent from "../components/Tangent";
+import MQTTConnection from '../config/MQTTConnection';
 import '../css/PianoContainer.css';
 
 class PianoContainer extends React.Component {
@@ -11,41 +12,22 @@ class PianoContainer extends React.Component {
             xEndPos: 15200,
             yStartPos: 1040,
             yEndPos: 6440
-        }
+        };
     }
 
     componentDidMount() {
-        // TODO Create some sort of coordinate/grid system
-
-        // Connect to server
-        const mqtt = require('mqtt');
-
-        const HOST = 'wss://mqtt.cloud.pozyxlabs.com';
-        const PORT = '443';
-        const TOPIC = '5bd0948cbc0fb66be9d64bba';
-
-        const client = mqtt.connect(`${HOST}:${PORT}`, {
-            username: "5bd0948cbc0fb66be9d64bba",
-            password: "ac1c289f-de25-468c-a87a-26b516e6c9dd",
-            keepalive: 5, // Default is 60 seconds
-            reconnectPeriod: 1000, // The client will automatically reconnect. This options defines the time between reconnects.
-        });
-        client.subscribe(TOPIC);
-
-        client.on('connect', () => {
-            console.info('Connected to local MQTT server!');
-        });
-
-        client.on('reconnect', () => {
-            console.info('Reconnecting...');
-        });
-
-        client.on('message', (topic, message) => {
-            //console.info(message.toString());
-            let toJson = JSON.parse(message.toString());
-            console.log(toJson);
-            // To get a JavaScript object, use JSON.parse(message.toString())
-        });
+        let connection = new MQTTConnection();
+        let tag = "3249431515";
+        let coords = {};
+        connection.connect();
+        setInterval(() => {
+            coords = connection.getCoordsFromTag(tag);
+            console.log("Coords", coords);
+        }, 3000);
+        let x = coords.x;
+        let y = coords.y;
+        console.log("X Position: " + x);
+        console.log("Y Position: " + y);
     }
 
     render() {
@@ -56,6 +38,14 @@ class PianoContainer extends React.Component {
 
                 </div>
               </canvas>
+
+
+
+
+
+
+
+
 
               <Tangent note="C" xstart="5200" xend="5866" ystart={this.state.yStartPos} yend={this.state.yEndPos} sound="sound_url"/>
               <Tangent note="D" xstart="5866" xend="6532" ystart={this.state.yStartPos} yend={this.state.yEndPos} sound="sound_url"/>
