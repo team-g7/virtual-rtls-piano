@@ -29,7 +29,7 @@ class PianoWrapper extends React.Component {
                 render={({ isLoading, playNote, stopNote }) => (
                     <Piano
                         noteRange={{first: MidiNumbers.fromNote(this.props.firstNote), last: MidiNumbers.fromNote(this.props.lastNote)}}
-                        width={105}
+                        width={1600}
                         keyWidthToHeight={0.15}
                         playNote={playNote}
                         stopNote={stopNote}
