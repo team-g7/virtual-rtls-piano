@@ -1,3 +1,5 @@
+// Parts of cude used from https://codesandbox.io/s/7wq15pm1n1
+
 import React from 'react';
 import { Piano, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
