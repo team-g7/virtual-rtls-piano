@@ -9,8 +9,6 @@ import '../css/Piano.css';
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const soundfontHostname = 'https://d1pzp51pvbm36p.cloudfront.net';
 
-const keyWidth = 67;
-
 class PianoWrapper extends React.Component {
 
     constructor(props) {
@@ -31,8 +29,8 @@ class PianoWrapper extends React.Component {
                 render={({ isLoading, playNote, stopNote }) => (
                     <Piano
                         noteRange={{first: MidiNumbers.fromNote(this.props.firstNote), last: MidiNumbers.fromNote(this.props.lastNote)}}
-                        width={67}
-                        keyWidthToHeight={0.2}
+                        width={105}
+                        keyWidthToHeight={0.15}
                         playNote={playNote}
                         stopNote={stopNote}
                         disabled={isLoading}

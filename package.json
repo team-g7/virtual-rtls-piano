@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "konva": "^3.2.3",
+    "midi-sounds-react": "^1.2.45",
     "mqtt": "^2.18.8",
     "prop-types": "latest",
     "react": "^16.8.4",
@@ -12,7 +13,7 @@
     "react-konva": "^16.8.4",
     "react-piano": "^3.1.2",
     "react-scripts": "2.1.8",
-    "soundfont-player": "latest"
+    "soundfont-player": "^0.11.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,5 +1,17 @@
-#visualization-canvas {
-    background: url('../assets/minifloorplan_cropped.png') no-repeat center center;
-    width: 100%;
-    margin: 30px auto;
+body,html{
+    height:100%;
+}
+
+body {
+    background: url('../assets/minifloorplan_cropped.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    overflow: hidden;
+}
+
+.piano-container {
+    margin-left: 200px !important;
+    margin-top: 180px;
 }
