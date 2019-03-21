@@ -30,12 +30,12 @@ class PianoContainer extends React.Component {
                 coords = connection.getCoordsFromTag(tag);
                 console.log("Coords", coords);
                 this.setState({
-                    xPos: coords.x - 5600,
-                    yPos: -(coords.y - 5800)
+                    xPos: ((coords.x - 5600) * window.innerWidth) / 10000,
+                    yPos: ((-(coords.y - 5100)) * window.innerHeight) / 5000
                 });
                 console.log("mapped coords", this.state.xPos, this.state.yPos);
             }
-        }, 30);
+        }, 160);
     }
 
     render() {
