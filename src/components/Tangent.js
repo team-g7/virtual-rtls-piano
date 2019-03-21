@@ -1,5 +1,4 @@
 import React from 'react';
-import ''
 
 class Tangent extends React.Component {
 
@@ -19,7 +18,7 @@ class Tangent extends React.Component {
         return (
           <div className="red">
               <p>
-                  asdasd
+                  {this.props.name}
               </p>
           </div>
         );
