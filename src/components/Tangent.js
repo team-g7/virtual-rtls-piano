@@ -3,6 +3,11 @@ import Konva from 'konva';
 import { Rect, Text, Circle, Line } from 'react-konva';
 import '../css/Tangent.css';
 
+/*
+
+            DEPRICATED
+
+*/
 class Tangent extends React.Component {
 
     constructor(props) {
