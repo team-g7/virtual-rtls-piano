@@ -1,6 +1,7 @@
 import React from "react";
 import MQTTConnection from '../config/MQTTConnection';
 import '../css/PianoContainer.css';
+import '../css/PosCircle.css'
 import PianoWrapper from "../components/PianoWrapper";
 import Konva from 'konva';
 import { Stage, Layer } from 'react-konva';
@@ -45,7 +46,7 @@ class PianoContainer extends React.Component {
                 {/* Adding piano */}
                 <PianoWrapper firstNote={'c3'} lastNote={'c5'}/>
                 {/* Setting stage for react konva */}
-                <Stage width={window.innerWidth} height={window.innerHeight}>
+                <Stage width={window.innerWidth} height={window.innerHeight} className={"PosCircle"}>
                     <Layer>
                         <PosCircle xPos={this.state.xPos} yPos={this.state.yPos}/>
                     </Layer>
