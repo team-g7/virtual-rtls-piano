@@ -23,11 +23,12 @@ class PianoContainer extends React.Component {
     componentDidMount() {
         let connection = new MQTTConnection();
         let tag = "3249431515";
-        let coords = {};
         connection.connect();
         setInterval(() => {
             if (connection.isConnected) {
-                coords = connection.getCoordsFromTag(tag);
+                let coords = connection.getCoordsFromTag(tag);
+                let normalizedAcceleration = connection.getNormalizedAccelerationFromTag(tag);
+                console.log("Normalized acceleration: ", normalizedAcceleration);
                 console.log("Coords", coords);
                 this.setState({
                     xPos: ((coords.x - 5600) * window.innerWidth) / 10000,
@@ -35,7 +36,7 @@ class PianoContainer extends React.Component {
                 });
                 console.log("mapped coords", this.state.xPos, this.state.yPos);
             }
-        }, 160);
+        }, 300);
     }
 
     render() {
