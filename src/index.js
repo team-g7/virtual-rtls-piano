@@ -2,12 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './App';
-import Tangent from './components/Tangent';
+import PianoContainer from './container/PianoContainer';
 import * as serviceWorker from './serviceWorker';
 
-
-
 ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<PianoContainer />, document.getElementById('pianoContainer'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -1,0 +1,5 @@
+#visualization-canvas {
+    background: url('../assets/minifloorplan_cropped.png') no-repeat center center;
+    width: 100%;
+    margin: 30px auto;
+}
