@@ -34,3 +34,4 @@ yarn-error.log*
 
 # Custom
 .directory
+package-lock.json
