@@ -15,3 +15,15 @@ body {
     margin-left: 200px !important;
     margin-top: 170px;
 }
+
+canvas {
+    z-index: 10;
+}
+
+.ReactPiano__Keyboard {
+    position: absolute;
+}
+
+.ReactPiano__Key--accidental {
+    z-index: 1;
+}
