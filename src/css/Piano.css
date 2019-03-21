@@ -5,6 +5,14 @@
     float: left;
 }
 
+.ReactPiano__Keyboard {
+    /* Used for absolute positioning of .ReactPiano__Key--accidental elements */
+    position: relative;
+    /* Used to lay out .ReactPiano__Key--natural elements */
+    display: flex;
+    float:left;
+}
+
 .ReactPiano__Key--accidental {
     background: #555555;
     border: 1px solid #888;

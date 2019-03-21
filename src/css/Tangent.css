@@ -4,6 +4,16 @@
     text-align: center;
     background-color: #F8F8F8;
     border: 2px #333333;
+    display: inline-block;
+}
+
+.bendik{
+    margin: 100px;
+}
+
+section{
+    margin: 1000px;
+    display: block;
 }
 
 .Tangent-pressed    {
