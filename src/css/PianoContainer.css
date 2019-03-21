@@ -8,4 +8,6 @@ body {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    margin-left: 25%;
+    margin-top: 10%;
 }
