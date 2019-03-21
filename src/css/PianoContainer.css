@@ -8,4 +8,10 @@ body {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    overflow: hidden;
+}
+
+.piano-container {
+    margin-left: 200px !important;
+    margin-top: 180px;
 }

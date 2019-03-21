@@ -10,7 +10,7 @@
     position: relative;
     /* Used to lay out .ReactPiano__Key--natural elements */
     display: flex;
-    float:left;
+    float: left;
 }
 
 .ReactPiano__Key--accidental {
