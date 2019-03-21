@@ -3,7 +3,6 @@ import MQTTConnection from '../config/MQTTConnection';
 import '../css/PianoContainer.css';
 import '../css/PosCircle.css'
 import PianoWrapper from "../components/PianoWrapper";
-import Konva from 'konva';
 import { Stage, Layer } from 'react-konva';
 import PosCircle from '../components/PosCircle';
 
@@ -29,13 +28,20 @@ class PianoContainer extends React.Component {
             if (connection.isConnected) {
                 let coords = connection.getCoordsFromTag(tag);
                 let normalizedAcceleration = connection.getNormalizedAccelerationFromTag(tag);
-                console.log("Normalized acceleration: ", normalizedAcceleration);
-                console.log("Coords", coords);
+                if (normalizedAcceleration > 2000) {
+                    try {
+                        document.elementFromPoint(this.state.xPos, this.state.yPos).click();
+                    } catch (npe) {
+                        console.log("Go to the VR lab. You are currently out of range.");
+                    }
+                }
+                //console.log("Normalized acceleration: ", normalizedAcceleration);
+                //console.log("Coords", coords);
                 this.setState({
                     xPos: ((coords.x - 5600) * window.innerWidth) / 10000,
                     yPos: ((-(coords.y - 5100)) * window.innerHeight) / 5000
                 });
-                console.log("mapped coords", this.state.xPos, this.state.yPos);
+                //console.log("mapped coords", this.state.xPos, this.state.yPos);
             }
         }, 300);
     }
