@@ -21,9 +21,11 @@ class PianoContainer extends React.Component {
         let coords = {};
         connection.connect();
         setInterval(() => {
-            coords = connection.getCoordsFromTag(tag);
-            console.log("Coords", coords);
-        }, 3000);
+            if (connection.isConnected) {
+                coords = connection.getCoordsFromTag(tag);
+                console.log("Coords", coords);
+            }
+        }, 2000);
         let x = coords.x;
         let y = coords.y;
         console.log("X Position: " + x);
