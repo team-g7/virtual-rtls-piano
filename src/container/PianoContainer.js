@@ -4,6 +4,10 @@ import '../css/PianoContainer.css';
 import Konva from 'konva';
 import {Circle, Layer, Stage} from "react-konva";
 
+//The mapped coordinates
+let xpos = 0;
+let ypos = 0;
+
 class PianoContainer extends React.Component {
 
     constructor() {
@@ -25,28 +29,17 @@ class PianoContainer extends React.Component {
             if (connection.isConnected) {
                 coords = connection.getCoordsFromTag(tag);
                 console.log("Coords", coords);
+                xpos = coords.x-4700;
+                ypos = coords.y-6140;
+                console.log("Mapped coords:", xpos, ypos);
             }
-        }, 2000);
-        let x = coords.x;
-        let y = coords.y;
-        console.log("X Position: " + x);
-        console.log("Y Position: " + y);
+        }, 500);
     }
 
     render() {
         return (
           <div>
-              <Stage width={window.innerWidth} height={window.innerHeight}>
-                  <Layer>
-                      <Circle
-                          x={0}
-                          y={0}
-                          radius={15}
-                          fill="#70ee00"
-                          shadowBlur={5}
-                      />
-                  </Layer>
-              </Stage>
+              <PosCircle xval={xpos} yval={ypos}/>
           </div>
         );
     }
