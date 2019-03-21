@@ -1,17 +1,18 @@
 import React from "react";
-import Tangent from "../components/Tangent";
 import MQTTConnection from '../config/MQTTConnection';
 import '../css/PianoContainer.css';
 import PianoWrapper from "../components/PianoWrapper";
-
-let xpos = 0;
-let ypos = 0;
+import Konva from 'konva';
+import { Stage, Layer } from 'react-konva';
+import PosCircle from '../components/PosCircle';
 
 class PianoContainer extends React.Component {
 
     constructor() {
         super();
         this.state = {
+            xPos: 0,
+            yPos: 0,
             xStartPos: 5200,
             xEndPos: 15200,
             yStartPos: 1040,
@@ -28,19 +29,19 @@ class PianoContainer extends React.Component {
             if (connection.isConnected) {
                 coords = connection.getCoordsFromTag(tag);
                 console.log("Coords", coords);
-                xpos = coords.x - 5600;
-                ypos = -(coords.y - 5800);
-                console.log("mapped coords", xpos, ypos);
+                this.setState({
+                    xPos: ((coords.x - 5600) * window.innerWidth) / 10000,
+                    yPos: ((-(coords.y - 5100)) * window.innerHeight) / 5000
+                });
+                console.log("mapped coords", this.state.xPos, this.state.yPos);
             }
-        }, 2000);
+        }, 160);
     }
 
     render() {
         return (
-          <div>
-              <div className="piano-container">
-                  <PianoWrapper firstNote={'c3'} lastNote={'c5'}/>
-                  {/*<PianoWrapper firstNote={'c3'} lastNote={'c3'}/>
+            <div className="piano-container">
+                {/*<PianoWrapper firstNote={'c3'} lastNote={'c3'}/>
                   <PianoWrapper firstNote={'d3'} lastNote={'d3'}/>
                   <PianoWrapper firstNote={'e3'} lastNote={'e3'}/>
                   <PianoWrapper firstNote={'f3'} lastNote={'f3'}/>
@@ -56,8 +57,16 @@ class PianoContainer extends React.Component {
                   <PianoWrapper firstNote={'b4'} lastNote={'b4'}/>
                   <PianoWrapper firstNote={'c5'} lastNote={'c5'}/>
                   */}
-              </div>
-              {/*<Tangent note="C" xstart="5200" xend="5866" ystart={this.state.yStartPos} yend={this.state.yEndPos} sound="sound_url"/>
+
+
+                {/* Setting stage for react konva */}
+                <Stage width={window.innerWidth} height={window.innerHeight}>
+                    <Layer>
+                        <PosCircle xPos={this.state.xPos} yPos={this.state.yPos}/>
+                    </Layer>
+                </Stage>
+
+                {/*<Tangent note="C" xstart="5200" xend="5866" ystart={this.state.yStartPos} yend={this.state.yEndPos} sound="sound_url"/>
               <Tangent note="D" xstart="5866" xend="6532" ystart={this.state.yStartPos} yend={this.state.yEndPos} sound="sound_url"/>
               <Tangent note="E" xstart="6532" xend="7198" ystart={this.state.yStartPos} yend={this.state.yEndPos} sound="sound_url"/>
               <Tangent note="F" xstart="7198" xend="7198" ystart={this.state.yStartPos} yend={this.state.yEndPos} sound="sound_url"/>
@@ -73,7 +82,7 @@ class PianoContainer extends React.Component {
               <Tangent note="H" xstart="13858" xend="14525" ystart={this.state.yStartPos} yend={this.state.yEndPos} sound="sound_url"/>
               <Tangent note="C" xstart="14525" xend="15190" ystart={this.state.yStartPos} yend={this.state.yEndPos} sound="sound_url"/>
                 */}
-          </div>
+            </div>
         );
     }
 }
