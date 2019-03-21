@@ -1,0 +1,10 @@
+.Tangent    {
+    text-align: center;
+    background-color: #FFFFFF;
+    border: 2px #333333;
+}
+
+.Tangent-pressed    {
+    background-color: #CCCCCC;
+    border: 2px #333333;
+}
