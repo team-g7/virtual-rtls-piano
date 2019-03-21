@@ -1,0 +1,17 @@
+/*From: https://codesandbox.io/s/7wq15pm1n1*/
+
+.ReactPiano__Key--accidental {
+    background: #555555;
+    border: 1px solid #888;
+}
+.ReactPiano__Key--natural {
+    background: #F8F8F833;
+    border: 1px solid #888;
+    margin-right: 0;
+}
+.ReactPiano__Key--active.ReactPiano__Key--accidental {
+    background: #333333;
+}
+.ReactPiano__Key--active.ReactPiano__Key--natural {
+    background: #0396ca33;
+}
