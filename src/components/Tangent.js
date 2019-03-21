@@ -1,12 +1,14 @@
 import React from 'react';
+import Konva from 'konva';
+import { Rect, Text, Circle, Line } from 'react-konva';
+import '../css/Tangent.css';
 
 class Tangent extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            starting_x_pos: 2,
-            ending_x_pos : 0
+            pressed: false
         }
     }
 
@@ -16,14 +18,18 @@ class Tangent extends React.Component {
 
     render() {
         return (
-          <div className="red">
-              <p>
-                  {this.props.name}
-              </p>
-          </div>
+              <Rect
+                  x={this.props.xstart}
+                  y={this.props.ystart}
+                  name={this.props.note}
+                  width={(this.props.xend - this.props.xstart)}
+                  height={(this.props.yend - this.props.ystart)}
+                  fill={"#F8F8F844"}
+                  stroke={"black"}
+                  strokeWidth={0.2}
+              />
         );
     }
-
 }
 
 export default Tangent;

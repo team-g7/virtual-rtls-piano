@@ -5,6 +5,7 @@ import App from './App';
 import Tangent from './components/Tangent';
 import * as serviceWorker from './serviceWorker';
 
+ReactDOM.render(<App/>, document.getElementById('root'));
 
 
 ReactDOM.render(<App />, document.getElementById('root'));

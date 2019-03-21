@@ -5,7 +5,9 @@
   "dependencies": {
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "konva": "3.2.2",
+    "react-konva": "16.8.4"
   },
   "scripts": {
     "start": "react-scripts start",
