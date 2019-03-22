@@ -5,6 +5,7 @@ import '../css/PosCircle.css'
 import PianoWrapper from "../components/PianoWrapper";
 import { Stage, Layer } from 'react-konva';
 import PosCircle from '../components/PosCircle';
+import Tangent from '../components/Tangent';
 
 class PianoContainer extends React.Component {
 
@@ -43,7 +44,7 @@ class PianoContainer extends React.Component {
                 });
                 //console.log("mapped coords", this.state.xPos, this.state.yPos);
             }
-        }, 300);
+        }, 350);
     }
 
     render() {
@@ -53,6 +54,23 @@ class PianoContainer extends React.Component {
                 <PianoWrapper firstNote={'c3'} lastNote={'c5'}/>
                 {/* Setting stage for react konva */}
                 <Stage width={window.innerWidth} height={window.innerHeight} className={"PosCircle"}>
+                    <Layer>
+                        <Tangent xStart={0} xEnd={106.667} note={"C"}/>
+                        <Tangent xStart={106.667} xEnd={213.334} note={"D"}/>
+                        <Tangent xStart={213.334} xEnd={320.001} note={"E"}/>
+                        <Tangent xStart={320.001} xEnd={426.668} note={"F"}/>
+                        <Tangent xStart={426.668} xEnd={533.335} note={"G"}/>
+                        <Tangent xStart={533.335} xEnd={640.002} note={"A"}/>
+                        <Tangent xStart={640.002} xEnd={746.669} note={"H"}/>
+                        <Tangent xStart={746.669} xEnd={853.336} note={"C"}/>
+                        <Tangent xStart={853.336} xEnd={960.003} note={"D"}/>
+                        <Tangent xStart={960.003} xEnd={1066.67} note={"E"}/>
+                        <Tangent xStart={1066.67} xEnd={1173.337} note={"F"}/>
+                        <Tangent xStart={1173.337} xEnd={1280.004} note={"G"}/>
+                        <Tangent xStart={1280.004} xEnd={1386.671} note={"A"}/>
+                        <Tangent xStart={1386.671} xEnd={1493.338} note={"H"}/>
+                        <Tangent xStart={1493.338} xEnd={1600.005} note={"C"}/>
+                    </Layer>
                     <Layer>
                         <PosCircle xPos={this.state.xPos} yPos={this.state.yPos}/>
                     </Layer>
