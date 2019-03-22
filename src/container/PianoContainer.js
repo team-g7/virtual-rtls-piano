@@ -47,7 +47,7 @@ class PianoContainer extends React.Component {
                 });
                 //console.log("mapped coords", this.state.xPos, this.state.yPos);
             }
-        }, 350);
+        }, 500);
     }
 
     findSound(circleX, circleY) {
@@ -56,55 +56,70 @@ class PianoContainer extends React.Component {
             // Tangent 1
             if ((circleX > 0 && circleX < 106.667)) {
                 console.log("Tangent 1 PRESSED!");
-                new Audio('../audio/C3.mp3').play();
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/C3.mp3').play();
             } // Tangent 2
             else if ((circleX > 106.667 && circleX < 213.334)) {
                 console.log("Tangent 2 PRESSED!");
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/D3.mp3').play();
             } // Tangent 3
             else if ((circleX > 213.334 && circleX < 320.001)) {
                 console.log("Tangent 3 PRESSED!");
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/E3.mp3').play();
             } // Tangent 4
             else if ((circleX > 320.001 && circleX < 426.668)) {
                 console.log("Tangent 4 PRESSED!");
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/F3.mp3').play();
             } // Tangent 5
             else if ((circleX > 426.668 && circleX < 533.335)) {
                 console.log("Tangent 5 PRESSED!");
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/G3.mp3').play();
             } // Tangent 6
             else if ((circleX > 533.335 && circleX < 640.002)) {
                 console.log("Tangent 6 PRESSED!");
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/A3.mp3').play();
             } // Tangent 7
             else if ((circleX > 640.002 && circleX < 746.669)) {
                 console.log("Tangent 7 PRESSED!");
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/B3.mp3').play();
             } // Tangent 8
             else if ((circleX > 746.669 && circleX < 853.336)) {
                 console.log("Tangent 8 PRESSED!");
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/C4.mp3').play();
             } // Tangent 9
             else if ((circleX > 853.336 && circleX < 960.003)) {
                 console.log("Tangent 9 PRESSED!");
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/D4.mp3').play();
             } // Tangent 10
             else if ((circleX > 960.003 && circleX < 1066.67)) {
                 console.log("Tangent 10 PRESSED!");
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/E4.mp3').play();
             } // Tangent 11
             else if ((circleX > 1066.67 && circleX < 1173.337)) {
                 console.log("Tangent 11 PRESSED!");
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/F4.mp3').play();
             } // Tangent 12
             else if ((circleX > 1173.337 && circleX < 1280.004)) {
                 console.log("Tangent 12 PRESSED!");
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/G4.mp3').play();
             } // Tangent 13
             else if ((circleX > 1280.004 && circleX < 1386.671)) {
                 console.log("Tangent 13 PRESSED!");
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/A4.mp3').play();
             } // Tangent 14
             else if ((circleX > 1386.671 && circleX < 1493.338)) {
                 console.log("Tangent 14 PRESSED!");
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/B4.mp3').play();
             } // Tangent 15
             else if ((circleX > 1493.338 && circleX < 1600.005)) {
                 console.log("Tangent 15 PRESSED!");
+                new Audio('https://raw.githubusercontent.com/fuhton/piano-mp3/master/piano-mp3/C5.mp3').play();
             }
         }
     }
 
     render() {
         return (
+
             <div className="piano-container">
                 {/* Adding piano */}
                 <PianoWrapper firstNote={'c3'} lastNote={'c5'}/>
