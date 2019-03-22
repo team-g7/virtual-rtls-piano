@@ -9,19 +9,15 @@ class Tangent extends React.Component{
             pressed: false,
             height: 711.117,
             width: 106.667,
-            fill: "red",
+            fill: "white",
+            stroke: "black",
             style: 'style="border: 1px solid black"'
         };
-        this.handleUpdate = this.handleUpdate.bind(this);
-    }
-
-    handleUpdate() {
-        //TODO Use method to run sound file
     }
 
     render() {
         return (
-          <Rect className="border-shit" note={this.props.note} sound="" fill={this.state.fill}
+          <Rect fill={this.state.fill} stroke={this.state.stroke}
                 x={this.props.xStart} xend={this.props.xEnd}
                 width={this.state.width} height={this.state.height}/>
         );
