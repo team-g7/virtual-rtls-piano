@@ -6,6 +6,7 @@ import PianoWrapper from "../components/PianoWrapper";
 import { Stage, Layer } from 'react-konva';
 import PosCircle from '../components/PosCircle';
 import Tangent from '../components/Tangent';
+import Sound from 'react-sound';
 
 class PianoContainer extends React.Component {
 
@@ -19,6 +20,7 @@ class PianoContainer extends React.Component {
             yStartPos: 1040,
             yEndPos: 6440
         };
+        this.findSound = this.findSound.bind(this);
     }
 
     componentDidMount() {
@@ -31,12 +33,13 @@ class PianoContainer extends React.Component {
                 let normalizedAcceleration = connection.getNormalizedAccelerationFromTag(tag);
                 if (normalizedAcceleration > 2000) {
                     try {
-                        document.elementFromPoint(this.state.xPos, this.state.yPos).click();
+                        // document.elementFromPoint(this.state.xPos, this.state.yPos).click();
+                        this.findSound(this.state.xPos, this.state.yPos);
                     } catch (npe) {
                         console.log("Go to the VR lab. You are currently out of range.");
                     }
                 }
-                //console.log("Normalized acceleration: ", normalizedAcceleration);
+                console.log("Normalized acceleration: ", normalizedAcceleration);
                 //console.log("Coords", coords);
                 this.setState({
                     xPos: ((coords.x - 5600) * window.innerWidth) / 10000,
@@ -45,6 +48,59 @@ class PianoContainer extends React.Component {
                 //console.log("mapped coords", this.state.xPos, this.state.yPos);
             }
         }, 350);
+    }
+
+    findSound(circleX, circleY) {
+        // Checks if y position is in accepted range
+        if (circleY > 0 && circleY < 711.118) {
+            // Tangent 1
+            if ((circleX > 0 && circleX < 106.667)) {
+                console.log("Tangent 1 PRESSED!");
+                new Audio('../audio/C3.mp3').play();
+            } // Tangent 2
+            else if ((circleX > 106.667 && circleX < 213.334)) {
+                console.log("Tangent 2 PRESSED!");
+            } // Tangent 3
+            else if ((circleX > 213.334 && circleX < 320.001)) {
+                console.log("Tangent 3 PRESSED!");
+            } // Tangent 4
+            else if ((circleX > 320.001 && circleX < 426.668)) {
+                console.log("Tangent 4 PRESSED!");
+            } // Tangent 5
+            else if ((circleX > 426.668 && circleX < 533.335)) {
+                console.log("Tangent 5 PRESSED!");
+            } // Tangent 6
+            else if ((circleX > 533.335 && circleX < 640.002)) {
+                console.log("Tangent 6 PRESSED!");
+            } // Tangent 7
+            else if ((circleX > 640.002 && circleX < 746.669)) {
+                console.log("Tangent 7 PRESSED!");
+            } // Tangent 8
+            else if ((circleX > 746.669 && circleX < 853.336)) {
+                console.log("Tangent 8 PRESSED!");
+            } // Tangent 9
+            else if ((circleX > 853.336 && circleX < 960.003)) {
+                console.log("Tangent 9 PRESSED!");
+            } // Tangent 10
+            else if ((circleX > 960.003 && circleX < 1066.67)) {
+                console.log("Tangent 10 PRESSED!");
+            } // Tangent 11
+            else if ((circleX > 1066.67 && circleX < 1173.337)) {
+                console.log("Tangent 11 PRESSED!");
+            } // Tangent 12
+            else if ((circleX > 1173.337 && circleX < 1280.004)) {
+                console.log("Tangent 12 PRESSED!");
+            } // Tangent 13
+            else if ((circleX > 1280.004 && circleX < 1386.671)) {
+                console.log("Tangent 13 PRESSED!");
+            } // Tangent 14
+            else if ((circleX > 1386.671 && circleX < 1493.338)) {
+                console.log("Tangent 14 PRESSED!");
+            } // Tangent 15
+            else if ((circleX > 1493.338 && circleX < 1600.005)) {
+                console.log("Tangent 15 PRESSED!");
+            }
+        }
     }
 
     render() {

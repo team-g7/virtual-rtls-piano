@@ -9,8 +9,6 @@ class Tangent extends React.Component{
             pressed: false,
             height: 711.117,
             width: 106.667,
-            yStart: 0,
-            yEnd: 0,
             fill: "red",
             style: 'style="border: 1px solid black"'
         };
@@ -25,7 +23,6 @@ class Tangent extends React.Component{
         return (
           <Rect className="border-shit" note={this.props.note} sound="" fill={this.state.fill}
                 x={this.props.xStart} xend={this.props.xEnd}
-                y={this.state.yStart} yend={this.state.yEnd}
                 width={this.state.width} height={this.state.height}/>
         );
     }
