@@ -20,3 +20,7 @@ section{
     background-color: #CCCCCC;
     border: 2px #333333;
 }
+
+.border-shit {
+    border: 3px solid black;
+}
